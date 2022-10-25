@@ -12,7 +12,6 @@ class AuthViewController: UIViewController {
     private lazy var loginLabel: UILabel = {
         let label = UILabel()
         label.text = "Login"
-        label.textColor = .white
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -46,65 +45,55 @@ class AuthViewController: UIViewController {
     private lazy var signUpButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(named: "signUp")?.withRenderingMode(.alwaysOriginal), for: .normal)
+        button.addTarget(self, action: #selector(signUpTapped), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
 
-    private lazy var textFieldStack: UIStackView = {
-        let stackView = UIStackView()
-        stackView.axis = .vertical
-        stackView.spacing = 10
-        stackView.distribution = .fillProportionally
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        return stackView
-    }()
+    private lazy var textFieldStackView = UIStackView(arrangeSubview: [emailTextField, passwordTextField],
+                                                  axis: .vertical,
+                                                  spacing: 10,
+                                                  distribution: .fillProportionally)
 
-    private lazy var buttonsStack: UIStackView = {
-        let stackView = UIStackView()
-        stackView.axis = .horizontal
-        stackView.spacing = 10
-        stackView.distribution = .fillEqually
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        return stackView
-    }()
-
+    private lazy var buttonsStackView = UIStackView(arrangeSubview: [signInButton, signUpButton],
+                                                  axis: .horizontal,
+                                                  spacing: 10,
+                                                  distribution: .fillEqually)
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .white
         setupHierarchy()
         setupLayout()
     }
 
     private func setupHierarchy() {
         view.addSubview(loginLabel)
-        textFieldStack.addArrangedSubview(emailTextField)
-        textFieldStack.addArrangedSubview(passwordTextField)
-        view.addSubview(textFieldStack)
-        buttonsStack.addArrangedSubview(signInButton)
-        buttonsStack.addArrangedSubview(signUpButton)
-        view.addSubview(buttonsStack)
+        view.addSubview(textFieldStackView)
+        view.addSubview(buttonsStackView)
     }
 
     private func setupLayout() {
         NSLayoutConstraint.activate([
             loginLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            loginLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            loginLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 250),
 
-            textFieldStack.topAnchor.constraint(equalTo: loginLabel.bottomAnchor, constant: 10),
-            textFieldStack.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            textFieldStack.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-//
-//            passwordTextField.topAnchor.constraint(equalTo: emailTextField.bottomAnchor, constant: 10),
-//            passwordTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-//            passwordTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            textFieldStackView.topAnchor.constraint(equalTo: loginLabel.bottomAnchor, constant: 10),
+            textFieldStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            textFieldStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
 
             signInButton.heightAnchor.constraint(equalToConstant: 120),
             signUpButton.heightAnchor.constraint(equalToConstant: 120),
 
-            buttonsStack.topAnchor.constraint(equalTo: textFieldStack.bottomAnchor, constant: 10),
-            buttonsStack.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            buttonsStack.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            buttonsStackView.topAnchor.constraint(equalTo: textFieldStackView.bottomAnchor, constant: 10),
+            buttonsStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            buttonsStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
         ])
+    }
+
+    @objc func signUpTapped() {
+        let viewController = SignUpViewController()
+        present(viewController, animated: true)
     }
 }
 
