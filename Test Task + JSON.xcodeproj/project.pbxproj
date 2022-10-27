@@ -17,6 +17,7 @@
 		D9BB1B812907B977004D0381 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D9BB1B802907B977004D0381 /* Assets.xcassets */; };
 		D9BB1B842907B977004D0381 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D9BB1B822907B977004D0381 /* LaunchScreen.storyboard */; };
 		D9D343B8290A5236001F129C /* DetailAlbumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D343B7290A5236001F129C /* DetailAlbumViewController.swift */; };
+		D9D343BA290A5766001F129C /* SongsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D343B9290A5766001F129C /* SongsCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		D9BB1B832907B977004D0381 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D9BB1B852907B977004D0381 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D9D343B7290A5236001F129C /* DetailAlbumViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailAlbumViewController.swift; sourceTree = "<group>"; };
+		D9D343B9290A5766001F129C /* SongsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongsCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +59,7 @@
 			isa = PBXGroup;
 			children = (
 				D95F18362909C30A004FC7B1 /* AlbumsTableViewCell.swift */,
+				D9D343B9290A5766001F129C /* SongsCollectionViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -200,6 +203,7 @@
 				D9BB1B7C2907B976004D0381 /* AuthViewController.swift in Sources */,
 				D9BB1B782907B976004D0381 /* AppDelegate.swift in Sources */,
 				D95F183429088452004FC7B1 /* AlbumsViewController.swift in Sources */,
+				D9D343BA290A5766001F129C /* SongsCollectionViewCell.swift in Sources */,
 				D95F182F2907F8C5004FC7B1 /* SignUpViewController.swift in Sources */,
 				D95F183229087AD2004FC7B1 /* UIStackView + Extensions.swift in Sources */,
 				D9D343B8290A5236001F129C /* DetailAlbumViewController.swift in Sources */,
