@@ -70,8 +70,8 @@ private func setupSearchController() {
 }
 
     @objc func userInfoButtonTapped() {
-//        let userInfoViewController = UserInfoViewController()
-//        navigationController?.pushViewController(userInfoViewController, animated: true)
+        let userInfoViewController = UserInfoViewController()
+        navigationController?.pushViewController(userInfoViewController, animated: true)
     }
 }
 
@@ -91,8 +91,8 @@ extension AlbumsViewController: UITableViewDataSource, UITableViewDelegate, UISe
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        let detailAlbumViewController = DetailAlbumViewController()
-//        navigationController?.pushViewController(detailAlbumViewController, animated: true)
+        let detailAlbumViewController = DetailAlbumViewController()
+        navigationController?.pushViewController(detailAlbumViewController, animated: true)
     }
 
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
