@@ -18,6 +18,7 @@
 		D9BB1B842907B977004D0381 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D9BB1B822907B977004D0381 /* LaunchScreen.storyboard */; };
 		D9D343B8290A5236001F129C /* DetailAlbumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D343B7290A5236001F129C /* DetailAlbumViewController.swift */; };
 		D9D343BA290A5766001F129C /* SongsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D343B9290A5766001F129C /* SongsCollectionViewCell.swift */; };
+		D9D343BC290A5EE7001F129C /* UserInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D343BB290A5EE7001F129C /* UserInfoViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		D9BB1B852907B977004D0381 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D9D343B7290A5236001F129C /* DetailAlbumViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailAlbumViewController.swift; sourceTree = "<group>"; };
 		D9D343B9290A5766001F129C /* SongsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongsCollectionViewCell.swift; sourceTree = "<group>"; };
+		D9D343BB290A5EE7001F129C /* UserInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,6 +127,7 @@
 				D95F182E2907F8C5004FC7B1 /* SignUpViewController.swift */,
 				D95F183329088452004FC7B1 /* AlbumsViewController.swift */,
 				D9D343B7290A5236001F129C /* DetailAlbumViewController.swift */,
+				D9D343BB290A5EE7001F129C /* UserInfoViewController.swift */,
 				D95F18352909C282004FC7B1 /* Cells */,
 			);
 			path = Controllers;
@@ -207,6 +210,7 @@
 				D95F182F2907F8C5004FC7B1 /* SignUpViewController.swift in Sources */,
 				D95F183229087AD2004FC7B1 /* UIStackView + Extensions.swift in Sources */,
 				D9D343B8290A5236001F129C /* DetailAlbumViewController.swift in Sources */,
+				D9D343BC290A5EE7001F129C /* UserInfoViewController.swift in Sources */,
 				D95F18372909C30A004FC7B1 /* AlbumsTableViewCell.swift in Sources */,
 				D9BB1B7A2907B976004D0381 /* SceneDelegate.swift in Sources */,
 			);
