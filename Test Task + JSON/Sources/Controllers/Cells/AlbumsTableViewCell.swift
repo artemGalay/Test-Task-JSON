@@ -67,7 +67,6 @@ class AlbumsTableViewCell: UITableViewCell {
         addSubview(albumsLogo)
         addSubview(albumNameLabel)
         addSubview(stackView)
-
     }
 
     private func setupLayout() {
