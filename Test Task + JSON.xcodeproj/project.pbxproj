@@ -10,6 +10,7 @@
 		D95F182F2907F8C5004FC7B1 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95F182E2907F8C5004FC7B1 /* SignUpViewController.swift */; };
 		D95F183229087AD2004FC7B1 /* UIStackView + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95F183129087AD2004FC7B1 /* UIStackView + Extensions.swift */; };
 		D95F183429088452004FC7B1 /* AlbumsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95F183329088452004FC7B1 /* AlbumsViewController.swift */; };
+		D95F18372909C30A004FC7B1 /* AlbumsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95F18362909C30A004FC7B1 /* AlbumsTableViewCell.swift */; };
 		D9BB1B782907B976004D0381 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9BB1B772907B976004D0381 /* AppDelegate.swift */; };
 		D9BB1B7A2907B976004D0381 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9BB1B792907B976004D0381 /* SceneDelegate.swift */; };
 		D9BB1B7C2907B976004D0381 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9BB1B7B2907B976004D0381 /* AuthViewController.swift */; };
@@ -21,6 +22,7 @@
 		D95F182E2907F8C5004FC7B1 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		D95F183129087AD2004FC7B1 /* UIStackView + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView + Extensions.swift"; sourceTree = "<group>"; };
 		D95F183329088452004FC7B1 /* AlbumsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumsViewController.swift; sourceTree = "<group>"; };
+		D95F18362909C30A004FC7B1 /* AlbumsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumsTableViewCell.swift; sourceTree = "<group>"; };
 		D9BB1B742907B976004D0381 /* Test Task + JSON.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Test Task + JSON.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9BB1B772907B976004D0381 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D9BB1B792907B976004D0381 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -52,6 +54,7 @@
 		D95F18352909C282004FC7B1 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				D95F18362909C30A004FC7B1 /* AlbumsTableViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -113,10 +116,10 @@
 		D9BB1B8E2907BCF1004D0381 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				D95F18352909C282004FC7B1 /* Cells */,
 				D9BB1B7B2907B976004D0381 /* AuthViewController.swift */,
 				D95F182E2907F8C5004FC7B1 /* SignUpViewController.swift */,
 				D95F183329088452004FC7B1 /* AlbumsViewController.swift */,
+				D95F18352909C282004FC7B1 /* Cells */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -196,6 +199,7 @@
 				D95F183429088452004FC7B1 /* AlbumsViewController.swift in Sources */,
 				D95F182F2907F8C5004FC7B1 /* SignUpViewController.swift in Sources */,
 				D95F183229087AD2004FC7B1 /* UIStackView + Extensions.swift in Sources */,
+				D95F18372909C30A004FC7B1 /* AlbumsTableViewCell.swift in Sources */,
 				D9BB1B7A2907B976004D0381 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

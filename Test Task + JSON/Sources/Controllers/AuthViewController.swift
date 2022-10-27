@@ -38,6 +38,7 @@ class AuthViewController: UIViewController {
     private lazy var signInButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(named: "signIn")?.withRenderingMode(.alwaysOriginal), for: .normal)
+        button.addTarget(self, action: #selector(signInTapped), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -89,6 +90,12 @@ class AuthViewController: UIViewController {
             buttonsStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             buttonsStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
         ])
+    }
+
+    @objc func signInTapped() {
+       let navigationViewController = UINavigationController(rootViewController: AlbumsViewController())
+        navigationViewController.modalPresentationStyle = .fullScreen
+        present(navigationViewController, animated: true)
     }
 
     @objc func signUpTapped() {
