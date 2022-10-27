@@ -9,33 +9,39 @@ import UIKit
 
 class AlbumsViewController: UIViewController {
 
-    private let tableView: UITableView = {
+    private lazy var tableView: UITableView = {
         let tableView = UITableView()
         tableView.backgroundColor = .white
-        tableView.register(AlbumsTableViewCell, forHeaderFooterViewReuseIdentifier: "cell")
+        tableView.register(AlbumsTableViewCell.self, forCellReuseIdentifier: "cell")
         tableView.delegate = self
         tableView.dataSource = self
         tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
     }()
 
-    private lazy var searchController: UISearchController = {
-        let searchController = UISearchController(searchResultsController: nil)
-        searchController.searchBar.delegate = self
-    }()
+    var searchController = UISearchController(searchResultsController: nil)
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupHierarchy()
+        setupLayout()
+        setupSearchController()
+        setNavigationBar()
+
     }
 
     private func setupHierarchy() {
         view.backgroundColor = .white
         view.addSubview(tableView)
-
     }
 
     private func setupLayout() {
-
+        NSLayoutConstraint.activate([
+            tableView.topAnchor.constraint(equalTo: view.topAnchor, constant: 0),
+            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0),
+            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
+            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0)
+        ])
     }
 
     private func createCustomButton(selector: Selector) -> UIBarButtonItem {
@@ -57,18 +63,20 @@ class AlbumsViewController: UIViewController {
         navigationItem.rightBarButtonItem = userInfoButton
     }
 
-    private func setupSearchController() {
-        searchController.searchBar.placeholder = "Search"
-        searchController.obscuresBackgroundDuringPresentation = false
-    }
+private func setupSearchController() {
+    searchController.searchBar.delegate = self
+    searchController.searchBar.placeholder = "Search"
+    searchController.obscuresBackgroundDuringPresentation = false
+}
 
     @objc func userInfoButtonTapped() {
-
+//        let userInfoViewController = UserInfoViewController()
+//        navigationController?.pushViewController(userInfoViewController, animated: true)
     }
-
 }
 
 extension AlbumsViewController: UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         10
     }
@@ -78,5 +86,16 @@ extension AlbumsViewController: UITableViewDataSource, UITableViewDelegate, UISe
         return cell
     }
 
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        70
+    }
 
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        let detailAlbumViewController = DetailAlbumViewController()
+//        navigationController?.pushViewController(detailAlbumViewController, animated: true)
+    }
+
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        print(searchText)
+    }
 }
