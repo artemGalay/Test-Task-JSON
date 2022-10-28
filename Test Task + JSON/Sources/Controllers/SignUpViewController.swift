@@ -149,7 +149,29 @@ class SignUpViewController: UIViewController {
     }
 
     @objc func signUpTapped() {
-        print("Hello")
+        let firstNameText = firstNameTextField.text ?? ""
+        let secondNameText = secondNameTextField.text ?? ""
+        let emailText = emailTextField.text ?? ""
+        let passwordText = passwordTextField.text ?? ""
+        let phoneText = phoneNumberTextField.text ?? ""
+
+        if firstNameText.isValid(validType: nameValidType)
+            && secondNameText.isValid(validType: nameValidType)
+            && emailText.isValid(validType: emailValidType)
+            && passwordText.isValid(validType: passwordValidType)
+            && phoneText.count == 18
+            && ageIsValid() == true {
+            DataBase.shared.saveUser(firstName: firstNameText,
+                                     secondName: secondNameText,
+                                     phone: phoneText,
+                                     email: emailText,
+                                     password: passwordText,
+                                     age: datePicker.date)
+            registrationLabel.text = "Registration complete"
+        } else {
+            registrationLabel.text = "Registration"
+            alertOk(title: "Error", message: "Fill in all the filds")
+        }
     }
 }
 

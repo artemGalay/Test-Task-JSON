@@ -22,6 +22,7 @@
 		D9D343BE290BD19A001F129C /* String + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D343BD290BD19A001F129C /* String + Extension.swift */; };
 		D9D343C1290C5016001F129C /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D343C0290C5016001F129C /* UserDefaultsManager.swift */; };
 		D9D343C4290C5144001F129C /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D343C3290C5144001F129C /* UserModel.swift */; };
+		D9D343C6290C5789001F129C /* AlertOk.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D343C5290C5789001F129C /* AlertOk.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,7 @@
 		D9D343BD290BD19A001F129C /* String + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String + Extension.swift"; sourceTree = "<group>"; };
 		D9D343C0290C5016001F129C /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
 		D9D343C3290C5144001F129C /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		D9D343C5290C5789001F129C /* AlertOk.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertOk.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -154,6 +156,7 @@
 			isa = PBXGroup;
 			children = (
 				D9D343C3290C5144001F129C /* UserModel.swift */,
+				D9D343C5290C5789001F129C /* AlertOk.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -234,6 +237,7 @@
 				D95F183429088452004FC7B1 /* AlbumsViewController.swift in Sources */,
 				D9D343BA290A5766001F129C /* SongsCollectionViewCell.swift in Sources */,
 				D9D343C4290C5144001F129C /* UserModel.swift in Sources */,
+				D9D343C6290C5789001F129C /* AlertOk.swift in Sources */,
 				D95F182F2907F8C5004FC7B1 /* SignUpViewController.swift in Sources */,
 				D95F183229087AD2004FC7B1 /* UIStackView + Extension.swift in Sources */,
 				D9D343B8290A5236001F129C /* DetailAlbumViewController.swift in Sources */,
