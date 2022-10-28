@@ -27,7 +27,6 @@ class AlbumsViewController: UIViewController {
         setupLayout()
         setupSearchController()
         setNavigationBar()
-
     }
 
     private func setupHierarchy() {

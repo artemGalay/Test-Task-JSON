@@ -89,8 +89,12 @@ class SignUpViewController: UIViewController {
         view.backgroundColor = .white
         setupHierarchy()
         setupLayout()
+        registerKeyboardNotificatuion()
     }
 
+    deinit {
+        removeKeyboardNotification()
+    }
 
     private func setupHierarchy() {
         view.addSubview(scrollView)
@@ -114,7 +118,7 @@ class SignUpViewController: UIViewController {
             backgroundView.widthAnchor.constraint(equalTo: view.widthAnchor),
 
             registrationLabel.centerXAnchor.constraint(equalTo: backgroundView.centerXAnchor),
-            registrationLabel.topAnchor.constraint(equalTo: backgroundView.safeAreaLayoutGuide.topAnchor, constant: 40),
+            registrationLabel.topAnchor.constraint(equalTo: backgroundView.safeAreaLayoutGuide.topAnchor, constant: 170),
 
             elementsStackView.topAnchor.constraint(equalTo: registrationLabel.bottomAnchor, constant: 20),
             elementsStackView.centerXAnchor.constraint(equalTo: backgroundView.centerXAnchor),
@@ -130,7 +134,35 @@ class SignUpViewController: UIViewController {
 
     @objc func signUpTapped() {
         print("Hello")
+    }
+}
 
+extension SignUpViewController {
+
+    private func registerKeyboardNotificatuion() {
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(keyboardWillShow),
+                                               name: UIResponder.keyboardWillShowNotification,
+                                               object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(keyboardWillHide),
+                                               name: UIResponder.keyboardWillHideNotification,
+                                               object: nil)
+    }
+
+    private func removeKeyboardNotification() {
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+
+    @objc private func keyboardWillShow(notofocation: Notification) {
+        let userInfo = notofocation.userInfo
+        let keyboardHeight = (userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
+        scrollView.contentOffset = CGPoint(x: 0, y: keyboardHeight.height / 2)
+    }
+
+    @objc private func keyboardWillHide(notofocation: Notification) {
+        scrollView.contentOffset = CGPoint.zero
     }
 }
 

@@ -77,7 +77,6 @@ class DetailAlbumViewController: UIViewController {
         view.addSubview(albumLogo)
         view.addSubview(stackView)
         view.addSubview(collectionView)
-
     }
 
     private func setupLayout() {
