@@ -71,7 +71,18 @@ class SignUpViewController: UIViewController {
     private lazy var emailValidLabel = makeLabel(text: "Required field")
     private lazy var passwordValidLabel = makeLabel(text: "Required field")
 
-    private lazy var elementsStackView = UIStackView(arrangeSubview: [firstNameTextField, firstNameValidLabel, secondNameTextField, secondNameValidLabel, datePicker, ageValidLabel, phoneNumberTextField, phoneNumberValidLabel, emailTextField, emailValidLabel, passwordTextField, passwordValidLabel],
+    private lazy var elementsStackView = UIStackView(arrangeSubview: [firstNameTextField,
+                                                                      firstNameValidLabel,
+                                                                      secondNameTextField,
+                                                                      secondNameValidLabel,
+                                                                      datePicker,
+                                                                      ageValidLabel,
+                                                                      phoneNumberTextField,
+                                                                      phoneNumberValidLabel,
+                                                                      emailTextField,
+                                                                      emailValidLabel,
+                                                                      passwordTextField,
+                                                                      passwordValidLabel],
                                                      axis: .vertical,
                                                      spacing: 10,
                                                      distribution: .fillProportionally)
@@ -83,6 +94,11 @@ class SignUpViewController: UIViewController {
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
+
+    let nameValidType: String.ValidTypes = .name
+    let emailValidType: String.ValidTypes = .email
+    let passwordValidType: String.ValidTypes = .password
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -137,6 +153,8 @@ class SignUpViewController: UIViewController {
     }
 }
 
+// MARK: - Keyboard Show Hide
+
 extension SignUpViewController {
 
     private func registerKeyboardNotificatuion() {
@@ -164,9 +182,70 @@ extension SignUpViewController {
     @objc private func keyboardWillHide(notofocation: Notification) {
         scrollView.contentOffset = CGPoint.zero
     }
+
+    private func setTextField(textField: UITextField, label: UILabel, valipType: String.ValidTypes, validMessage: String, wrongMessage: String, string: String, range: NSRange) {
+
+        let text = (textField.text ?? "") + string
+        let result: String
+
+        if range.length == 1 {
+            let end = text.index(text.startIndex, offsetBy: text.count - 1)
+            result = String(text[text.startIndex..<end])
+        } else {
+            result = text
+        }
+        textField.text = result
+
+        if result.isValid(validType: valipType) {
+            label.text = validMessage
+            label.textColor = .green
+        } else {
+            label.text = wrongMessage
+            label.textColor = .red
+        }
+    }
 }
 
 extension SignUpViewController: UITextFieldDelegate {
+
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+
+        switch textField {
+        case firstNameTextField: setTextField(textField: firstNameTextField,
+                                              label: firstNameValidLabel,
+                                              valipType: nameValidType,
+                                              validMessage: "Name is valid",
+                                              wrongMessage: "Only A-Z characters, min 1 character",
+                                              string: string,
+                                              range: range)
+        case secondNameTextField: setTextField(textField: secondNameTextField,
+                                               label: secondNameValidLabel,
+                                               valipType: nameValidType,
+                                               validMessage: "Name is valid",
+                                               wrongMessage: "Only A-Z characters, min 1 character",
+                                               string: string,
+                                               range: range)
+        case emailTextField: setTextField(textField: emailTextField,
+                                               label: emailValidLabel,
+                                               valipType: emailValidType,
+                                               validMessage: "Email is valid",
+                                               wrongMessage: "Email is not valid",
+                                               string: string,
+                                               range: range)
+        case passwordTextField: setTextField(textField: passwordTextField,
+                                               label: passwordValidLabel,
+                                               valipType: passwordValidType,
+                                               validMessage: "Password is valid",
+                                               wrongMessage: "Password is not valid",
+                                               string: string,
+                                               range: range)
+        default:
+            break
+        }
+
+        return false
+    }
+
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         firstNameTextField.resignFirstResponder()
         secondNameTextField.resignFirstResponder()
