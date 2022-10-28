@@ -204,6 +204,32 @@ extension SignUpViewController {
             label.textColor = .red
         }
     }
+
+    private func setPhoneNumberMask(textField: UITextField, mask: String, string: String, range: NSRange) -> String {
+        let text = textField.text ?? ""
+        let phone = (text as NSString).replacingCharacters(in: range, with: string)
+        let number = phone.replacingOccurrences(of: "[^0-9]", with: "", options: .regularExpression)
+        var result = ""
+        var index = number.startIndex
+
+        for character in mask where index < number.endIndex {
+            if character == "X" {
+                result.append(number[index])
+                index = number.index(after: index)
+            } else {
+                result.append(character)
+            }
+        }
+
+        if result.count == 18 {
+            phoneNumberValidLabel.text = "Phine is valid"
+            phoneNumberValidLabel.textColor = .green
+        } else {
+            phoneNumberValidLabel.text = "Phine is not valid"
+            phoneNumberValidLabel.textColor = .red
+        }
+        return result
+    }
 }
 
 extension SignUpViewController: UITextFieldDelegate {
@@ -239,6 +265,10 @@ extension SignUpViewController: UITextFieldDelegate {
                                                wrongMessage: "Password is not valid",
                                                string: string,
                                                range: range)
+        case phoneNumberTextField: phoneNumberTextField.text = setPhoneNumberMask(textField: phoneNumberTextField,
+                                                                                  mask: "+X (XXX) XXX-XX-XX",
+                                                                                  string: string,
+                                                                                  range: range)
         default:
             break
         }
