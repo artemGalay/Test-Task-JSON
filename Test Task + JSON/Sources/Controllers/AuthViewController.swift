@@ -9,7 +9,7 @@ import UIKit
 
 class AuthViewController: UIViewController {
 
-    private lazy var loginLabel: UILabel = {
+    private let loginLabel: UILabel = {
         let label = UILabel()
         label.text = "Login"
         label.translatesAutoresizingMaskIntoConstraints = false
