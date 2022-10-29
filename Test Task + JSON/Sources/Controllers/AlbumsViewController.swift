@@ -21,12 +21,15 @@ class AlbumsViewController: UIViewController {
 
     var searchController = UISearchController(searchResultsController: nil)
 
+    var albums = [Album]()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupHierarchy()
         setupLayout()
         setupSearchController()
         setNavigationBar()
+        fetchAlbums(albumName: "Sheffield")
     }
 
     private func setupHierarchy() {
@@ -62,15 +65,31 @@ class AlbumsViewController: UIViewController {
         navigationItem.rightBarButtonItem = userInfoButton
     }
 
-private func setupSearchController() {
-    searchController.searchBar.delegate = self
-    searchController.searchBar.placeholder = "Search"
-    searchController.obscuresBackgroundDuringPresentation = false
-}
+    private func setupSearchController() {
+        searchController.searchBar.delegate = self
+        searchController.searchBar.placeholder = "Search"
+        searchController.obscuresBackgroundDuringPresentation = false
+    }
 
     @objc func userInfoButtonTapped() {
         let userInfoViewController = UserInfoViewController()
         navigationController?.pushViewController(userInfoViewController, animated: true)
+    }
+
+    private func fetchAlbums(albumName: String) {
+
+        let urlString = "https://itunes.apple.com/search?term=\(albumName)&entity=album&attribute=albumTerm"
+
+        NetworkDataFetch.shared.fetchAlbum(urlString: urlString) { [weak self] albumModel, error in
+            if error == nil {
+
+                guard let albumModel = albumModel else { return }
+                self?.albums = albumModel.results
+
+            } else {
+                print(error!.localizedDescription)
+            }
+        }
     }
 }
 
