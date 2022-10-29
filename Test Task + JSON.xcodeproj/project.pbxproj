@@ -23,6 +23,7 @@
 		D9D343C1290C5016001F129C /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D343C0290C5016001F129C /* UserDefaultsManager.swift */; };
 		D9D343C4290C5144001F129C /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D343C3290C5144001F129C /* UserModel.swift */; };
 		D9D343C6290C5789001F129C /* AlertOk.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D343C5290C5789001F129C /* AlertOk.swift */; };
+		D9D343C8290D7EB4001F129C /* AlbumModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D343C7290D7EB4001F129C /* AlbumModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +45,7 @@
 		D9D343C0290C5016001F129C /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
 		D9D343C3290C5144001F129C /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		D9D343C5290C5789001F129C /* AlertOk.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertOk.swift; sourceTree = "<group>"; };
+		D9D343C7290D7EB4001F129C /* AlbumModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -157,6 +159,7 @@
 			children = (
 				D9D343C3290C5144001F129C /* UserModel.swift */,
 				D9D343C5290C5789001F129C /* AlertOk.swift */,
+				D9D343C7290D7EB4001F129C /* AlbumModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -232,6 +235,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D9BB1B7C2907B976004D0381 /* AuthViewController.swift in Sources */,
+				D9D343C8290D7EB4001F129C /* AlbumModel.swift in Sources */,
 				D9BB1B782907B976004D0381 /* AppDelegate.swift in Sources */,
 				D9D343C1290C5016001F129C /* UserDefaultsManager.swift in Sources */,
 				D95F183429088452004FC7B1 /* AlbumsViewController.swift in Sources */,
