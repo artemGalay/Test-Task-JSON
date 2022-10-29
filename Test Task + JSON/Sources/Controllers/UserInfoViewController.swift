@@ -67,6 +67,7 @@ class UserInfoViewController: UIViewController {
         view.backgroundColor = .white
         setupHierarchy()
         setupLayout()
+        setModel()
     }
 
     private func setupHierarchy() {
@@ -78,8 +79,21 @@ class UserInfoViewController: UIViewController {
             stackView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20)
-
         ])
     }
 
+    private func setModel() {
+        guard let activeUser = DataBase.shared.activeUser else { return }
+
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd.MM.yyyy"
+        let dateString = dateFormatter.string(from: activeUser.age)
+
+        firstNameLabel.text = activeUser.firstName
+        seconNameLabel.text = activeUser.secondName
+        phoneLabel.text = activeUser.phone
+        emailLabel.text = activeUser.email
+        passwordLabel.text = activeUser.password
+        ageLabel.text = dateString
+    }
 }
