@@ -67,6 +67,7 @@ class DetailAlbumViewController: UIViewController {
                                              distribution: .fillProportionally)
 
     var album: Album?
+    var songs = [Song]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -74,6 +75,7 @@ class DetailAlbumViewController: UIViewController {
         setupHierarchy()
         setupLayout()
         setModel()
+        fetchSong(album: album)
     }
 
     private func setupHierarchy() {
@@ -141,17 +143,35 @@ class DetailAlbumViewController: UIViewController {
             albumLogo.image = nil
         }
     }
+
+    private func fetchSong(album: Album?) {
+        guard let album = album else { return }
+        let idAlbum = album.collectionId
+        let urlString = "https://itunes.apple.com/lookup?id\(idAlbum)&entity=song"
+
+        NetworkDataFetch.shared.fetchSongs(urlString: urlString) { [weak self] songsModel, error in
+            if error == nil {
+                guard let songsModel = songsModel else { return }
+                self?.songs = songsModel.results
+                self?.collectionView.reloadData()
+            } else {
+                print(error!.localizedDescription)
+                self?.alertOk(title: "Error", message: error!.localizedDescription)
+            }
+        }
+    }
 }
 
 extension DetailAlbumViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        10
+        songs.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! SongsCollectionViewCell
-        cell.nameSongLabel.text = "Name song"
+        let song = songs[indexPath.row].trackName
+        cell.nameSongLabel.text = song
         return cell
     }
 

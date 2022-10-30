@@ -26,6 +26,7 @@
 		D9D343C8290D7EB4001F129C /* AlbumModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D343C7290D7EB4001F129C /* AlbumModel.swift */; };
 		D9D343CB290D80CB001F129C /* NetworkRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D343CA290D80CB001F129C /* NetworkRequest.swift */; };
 		D9D343CD290D8299001F129C /* NetworkDataFetch.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D343CC290D8299001F129C /* NetworkDataFetch.swift */; };
+		D9D343CF290E8965001F129C /* SongsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D343CE290E8965001F129C /* SongsModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +51,7 @@
 		D9D343C7290D7EB4001F129C /* AlbumModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumModel.swift; sourceTree = "<group>"; };
 		D9D343CA290D80CB001F129C /* NetworkRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequest.swift; sourceTree = "<group>"; };
 		D9D343CC290D8299001F129C /* NetworkDataFetch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkDataFetch.swift; sourceTree = "<group>"; };
+		D9D343CE290E8965001F129C /* SongsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongsModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -165,6 +167,7 @@
 				D9D343C3290C5144001F129C /* UserModel.swift */,
 				D9D343C5290C5789001F129C /* AlertOk.swift */,
 				D9D343C7290D7EB4001F129C /* AlbumModel.swift */,
+				D9D343CE290E8965001F129C /* SongsModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -262,6 +265,7 @@
 				D9D343B8290A5236001F129C /* DetailAlbumViewController.swift in Sources */,
 				D9D343BE290BD19A001F129C /* String + Extension.swift in Sources */,
 				D9D343BC290A5EE7001F129C /* UserInfoViewController.swift in Sources */,
+				D9D343CF290E8965001F129C /* SongsModel.swift in Sources */,
 				D9D343CD290D8299001F129C /* NetworkDataFetch.swift in Sources */,
 				D95F18372909C30A004FC7B1 /* AlbumsTableViewCell.swift in Sources */,
 				D9BB1B7A2907B976004D0381 /* SceneDelegate.swift in Sources */,
