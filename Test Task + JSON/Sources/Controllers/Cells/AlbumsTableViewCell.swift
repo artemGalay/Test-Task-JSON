@@ -70,6 +70,21 @@ class AlbumsTableViewCell: UITableViewCell {
     }
 
     func configureAlbumCell(album: Album) {
+
+        if let urlString = album.artworkUrl100 {
+            NetworkRequest.shared.requestData(urlString: urlString) { [weak self] result in
+                switch result {
+                case .success(let data):
+                    let image = UIImage(data: data)
+                    self?.albumsLogo.image = image
+                case .failure(let error):
+                    self?.albumsLogo.image = nil
+                    print("No album logo" + error.localizedDescription)
+                }
+            }
+        } else {
+            albumsLogo.image = nil
+        }
         albumNameLabel.text = album.collectionName
         artistNameLabel.text = album.artistName
         trackCountLabel.text = "\(album.trackCount) tracks"

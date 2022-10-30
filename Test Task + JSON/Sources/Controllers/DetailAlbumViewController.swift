@@ -66,6 +66,8 @@ class DetailAlbumViewController: UIViewController {
                                              spacing: 10,
                                              distribution: .fillProportionally)
 
+    var album: Album?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
@@ -95,6 +97,26 @@ class DetailAlbumViewController: UIViewController {
             collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
             collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -10)
         ])
+    }
+
+    private func setModel() {
+        guard let album = album else { return }
+
+        albumNameLabel.text = album.collectionName
+        artistNameLabel.text = album.artistName
+        trackCountLabel.text = "\(album.trackCount) tracks"
+
+    }
+
+    private func setDateFormat(date: String) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy'-MM'dd'HH':'mm':'ss':'ssZZZ"
+        guard let backEndDate = dateFormatter.date(from: date) else { return "" }
+
+        let formatDate = DateFormatter()
+        formatDate.dateFormat = "dd-MM-yyyy"
+        let date = formatDate.string(from: backEndDate)
+        return date
     }
 }
 
