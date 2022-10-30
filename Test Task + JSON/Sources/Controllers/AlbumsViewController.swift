@@ -84,8 +84,16 @@ class AlbumsViewController: UIViewController {
             if error == nil {
 
                 guard let albumModel = albumModel else { return }
-                self?.albums = albumModel.results
-                self?.tableView.reloadData()
+
+                if albumModel.results != [] {
+                    let sortedAlbums = albumModel.results.sorted { firstItem, secondItem in
+                        return firstItem.collectionName.compare(secondItem.collectionName) == ComparisonResult.orderedAscending
+                    }
+                    self?.albums = sortedAlbums
+                    self?.tableView.reloadData()
+                } else {
+                    self?.alertOk(title: "Error", message: "Album not found. Add some words.")
+                }
             } else {
                 print(error!.localizedDescription)
             }
@@ -112,14 +120,20 @@ extension AlbumsViewController: UITableViewDataSource, UITableViewDelegate, UISe
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let detailAlbumViewController = DetailAlbumViewController()
+        let album = albums[indexPath.row]
+        detailAlbumViewController.album = album
+        detailAlbumViewController.title = album.artistName
         navigationController?.pushViewController(detailAlbumViewController, animated: true)
     }
 
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+
+        let text = searchText.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)
+
         if searchText != "" {
             timer?.invalidate()
             timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false, block: { [weak self] _ in
-                self?.fetchAlbums(albumName: searchText)
+                self?.fetchAlbums(albumName: text ?? "")
             })
         }
     }
