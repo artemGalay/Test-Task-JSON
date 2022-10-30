@@ -69,6 +69,12 @@ class AlbumsTableViewCell: UITableViewCell {
         addSubview(stackView)
     }
 
+    func configureAlbumCell(album: Album) {
+        albumNameLabel.text = album.collectionName
+        artistNameLabel.text = album.artistName
+        trackCountLabel.text = "\(album.trackCount) tracks"
+    }
+
     private func setupLayout() {
         NSLayoutConstraint.activate([
             albumsLogo.centerYAnchor.constraint(equalTo: centerYAnchor),
@@ -83,8 +89,6 @@ class AlbumsTableViewCell: UITableViewCell {
             stackView.topAnchor.constraint(equalTo: albumNameLabel.bottomAnchor, constant: 10),
             stackView.leadingAnchor.constraint(equalTo: albumsLogo.trailingAnchor, constant: 10),
             stackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10)
-
         ])
-
     }
 }
