@@ -73,6 +73,7 @@ class DetailAlbumViewController: UIViewController {
         view.backgroundColor = .white
         setupHierarchy()
         setupLayout()
+        setModel()
     }
 
     private func setupHierarchy() {
@@ -105,18 +106,40 @@ class DetailAlbumViewController: UIViewController {
         albumNameLabel.text = album.collectionName
         artistNameLabel.text = album.artistName
         trackCountLabel.text = "\(album.trackCount) tracks"
+        releaseDataLabel.text = setDateFormat(date: album.releaseDate)
 
+        guard let url = album.artworkUrl100 else { return }
+        setImage(urlString: url)
     }
 
     private func setDateFormat(date: String) -> String {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy'-MM'dd'HH':'mm':'ss':'ssZZZ"
+        dateFormatter.dateFormat = "yyyy'-MM'-'dd'T'HH':'mm':'ssZZZ"
         guard let backEndDate = dateFormatter.date(from: date) else { return "" }
 
         let formatDate = DateFormatter()
         formatDate.dateFormat = "dd-MM-yyyy"
         let date = formatDate.string(from: backEndDate)
         return date
+    }
+
+    private func setImage(urlString: String?) {
+
+        if let url = urlString {
+
+            NetworkRequest.shared.requestData(urlString: url) { [weak self] result in
+                switch result {
+                case .success(let data):
+                    let image = UIImage(data: data)
+                    self?.albumLogo.image = image
+                case .failure(let error):
+                    self?.albumLogo.image = nil
+                    print("No album logo" + error.localizedDescription)
+                }
+            }
+        } else {
+            albumLogo.image = nil
+        }
     }
 }
 
